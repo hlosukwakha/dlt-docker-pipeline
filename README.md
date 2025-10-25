@@ -119,13 +119,7 @@ docker compose exec -T postgres psql -U dlt -d dlt -c "\dt hn_raw.*"
 
 ---
 
-## ✍️ Blog‑Style Note
 
-> “The beauty of DLT is its simplicity — it lets data engineers focus on logic, not plumbing.  
-> Combine it with Docker and you get a reproducible, portable data environment that runs anywhere.  
-> This project takes one of the most public APIs (Hacker News) and shows how fast you can turn raw JSON into queryable analytics tables.”
-
----
 
 ## 🗓️ Last Updated
 **October 25, 2025**
