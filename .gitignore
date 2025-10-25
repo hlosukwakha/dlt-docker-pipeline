@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+env/
+
+# dlt local state
+.dlt/
+
+# VSCode / IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+
+# dotenv
+.env

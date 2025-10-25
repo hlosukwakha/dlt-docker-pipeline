@@ -1,0 +1,31 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-dlt}
+      POSTGRES_USER: ${POSTGRES_USER:-dlt}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-dlt}
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-dlt} -d ${POSTGRES_DB:-dlt}"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+
+  dlt-runner:
+    build: .
+    depends_on:
+      postgres:
+        condition: service_healthy
+    env_file:
+      - .env
+    # If you want live-editing during development, uncomment the next two lines
+    # volumes:
+    #   - .:/app
+    command: ["python", "-m", "src.pipeline"]
+
+volumes:
+  pg_data:

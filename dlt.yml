@@ -1,0 +1,4 @@
+# Basic dlt config. You can override anything via env vars or profiles.
+pipeline_name: hn_to_postgres
+dataset_name: hn_raw
+destination_name: postgres
